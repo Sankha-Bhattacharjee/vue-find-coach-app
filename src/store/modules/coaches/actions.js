@@ -25,10 +25,14 @@ export default {
             id: userId
         });
     },
-    async loadCoaches(context){
+    async loadCoaches(context,payload){
+        if(!payload.forceUpdate && !context.getters.shouldUpdate){
+            return;
+        }
         const response = await fetch(`https://vue-find-coach-cb874-default-rtdb.firebaseio.com/coaches.json`);
-        if(!response.ok){
-            //error...
+        if(!response.ok){  
+            const error = new Error(responseData.message || 'Something Went wrong!');
+            throw error;
         }
         const responseData = await response.json();
 
@@ -46,5 +50,6 @@ export default {
         }
 
         context.commit('setCoaches', coaches);
+        context.commit('setLastFetchTomestamp');
     }
 };
