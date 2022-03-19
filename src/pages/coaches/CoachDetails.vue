@@ -10,9 +10,9 @@
       <base-card>
         <header>
           <h2>Intrested?Reach out Now!</h2>
-          <base-button link :to="contactLink">Contact</base-button>
+          <base-button link :to="contactLink" :mode="disableMode">Contact</base-button>
         </header>
-        <router-view></router-view>
+        <router-view @disable-button="disableButton"></router-view>
       </base-card>
     </section>
     <section>
@@ -35,6 +35,8 @@ export default {
   data() {
     return {
       selectedCustomer: null,
+      isDisable:false,
+      disableMode:null,
     };
   },
   computed: {
@@ -53,7 +55,7 @@ export default {
       return this.selectedCustomer.description;
     },
     contactLink() {
-      return this.$route.path + '/' + this.id + '/contact';
+      return this.isDisable ? '': this.$route.path + '/contact';
     },
   },
   created() {
@@ -61,5 +63,11 @@ export default {
       (coach) => coach.id === this.id
     );
   },
+  methods:{
+    disableButton(value){
+      this.isDisable = value;
+      this.disableMode = 'inactive';
+    }
+  }
 };
 </script>

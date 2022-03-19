@@ -19,12 +19,18 @@
 
 <script>
 export default {
+  emits:['disable-button'],
   data() {
     return {
       email: '',
       message: '',
       formIsValid: true,
     };
+  },
+  created(){
+    if(this.$route.path.includes('contact')){
+      this.$emit('disable-button',true);
+    }
   },
   methods: {
     submitForm() {

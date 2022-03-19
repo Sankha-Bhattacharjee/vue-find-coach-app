@@ -64,6 +64,11 @@ button:active {
   color: #270041;
 }
 
+.inactive{
+  opacity:0.8;
+  cursor: text;
+}
+
 .flat:hover,
 .flat:active,
 .outline:hover,

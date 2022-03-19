@@ -42,11 +42,11 @@ body {
   transform: translateY(30px);
 }
 
-.route-enter-actve{
+.route-enter-active{
   transition: all 0.3s ease-out;
 }
 
-.route-leave-actve{
+.route-leave-active{
   transition: all 0.3s ease-in;
 }
 
