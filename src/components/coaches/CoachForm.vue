@@ -36,7 +36,7 @@
       </div>
       <p v-if="!areas.isValid">Atleast one expertise must be selected.</p>
     </div>
-    <p>Please fix the above errors and submit again.</p>
+    <p v-if="!formIsValid">Please fix the above errors and submit again.</p>
     <base-button>Register</base-button>
   </form>
 </template>
